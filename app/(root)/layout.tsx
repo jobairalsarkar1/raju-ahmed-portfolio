@@ -1,13 +1,11 @@
-import Navbar from "@/components/common/Navbar";
 import React from "react";
+import Navbar from "@/components/common/Navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <main className="pt-16 bg-black/30 selection:bg-orange-500/30">
-        {children}
-      </main>
+      <main className="pt-16">{children}</main>
     </div>
   );
 }
