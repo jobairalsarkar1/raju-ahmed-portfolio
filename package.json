@@ -2,6 +2,11 @@
   "name": "designer-portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Jobair Al Sarkar",
+    "email": "jobair.a.sarkar@gmail.com",
+    "role": "Software Engineer"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
