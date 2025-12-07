@@ -17,7 +17,7 @@ export default function About() {
 
         <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left: Image + Name */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col items-center lg:items-start overflow-hidden sm:overflow-visible">
             <div className="relative group w-[580px] aspect-[4/2.5]">
               {/* Bottom Card */}
               <div className="absolute inset-0 bg-white rounded-2xl transition-all duration-500 ease-out z-0 translate-x-2 translate-y-2 group-hover:-rotate-3 group-hover:-translate-x-4 group-hover:translate-y-4 group-hover:scale-[1.03]"></div>

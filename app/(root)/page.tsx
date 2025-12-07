@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import Services from "@/components/Services";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Services />
       <About />
+      <FAQ />
     </>
   );
 }
