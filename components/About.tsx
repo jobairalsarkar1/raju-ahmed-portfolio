@@ -45,11 +45,11 @@ export default function About() {
           <div className="space-y-12">
             <div className="w-full">
               <p className="text-2xl text-gray-700 leading-relaxed">
-                Hi, I'm Raju, a passionate UI/UX Designer with over 3 years of
+                Hi, I&apos;m Raju, a passionate UI/UX Designer with over 3 years of
                 experience designing engaging and user-friendly interfaces for
                 mobile apps and websites. I specialize in creating intuitive,
                 interactive, and dynamic user experiences. My design philosophy
-                is <span className="font-semibold">"Simple is smart"</span> and
+                is <span className="font-semibold">&ldquo;Simple is smart&rdquo;</span> and
                 I always prioritize creating simple, clean, and aesthetically
                 pleasing designs.
               </p>
