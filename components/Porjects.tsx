@@ -149,7 +149,7 @@ export default function Projects() {
         <div className="container mx-auto px-4 lg:px-8 xl:px-16">
           {/* Header */}
           <div className="text-center mb-16">
-            <p className="text-xl font-medium text-gray-600 tracking-wider mb-2">
+            <p className="text-2xl font-medium text-gray-600 tracking-wider mb-2">
               Portfolio
             </p>
             <h2 className="text-[44px] font-bold text-gray-900 leading-tight mt-2">
