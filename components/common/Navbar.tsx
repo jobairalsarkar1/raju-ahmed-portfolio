@@ -32,14 +32,14 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center md:justify-start mx-auto md:mx-0"
+              className="mt-2 flex items-center md:justify-start mx-auto md:mx-0"
             >
               <Image
                 src="/logo.svg"
                 alt="Logo"
                 width={40}
                 height={40}
-                className="h-10 w-auto"
+                className="h-11 w-auto"
               />
             </Link>
 
@@ -50,7 +50,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   scroll={true}
-                  className="text-sm lg:text-base tracking-wide font-medium hover:text-[#6E46FF] transition"
+                  className="text-sm lg:text-[20px] tracking-wide font-semibold hover:text-[#6E46FF] transition whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 scroll={true}
-                className="pl-6 pr-5 py-2 flex items-center justify-center gap-2 rounded-full bg-[#6E46FF] text-white text-sm font-semibold hover:bg-[#6E46FF]/90 transition"
+                className="pl-8 pr-6 py-2.5 flex items-center justify-center gap-2 rounded-full bg-[#6E46FF] text-white text-[20px] font-semibold hover:bg-[#6E46FF]/90 transition"
               >
                 <span className="tracking-wide">Let&apos;s Talk</span>
                 <ArrowUpRight className="w-6 h-6" />
@@ -106,7 +106,7 @@ export default function Navbar() {
         </div>
 
         {/* Dynamic Mobile Nav */}
-        <div className="flex flex-col gap-6 text-base font-medium">
+        <div className="flex flex-col gap-6 text-base font-semibold">
           {navItems.map((item) => (
             <Link
               key={item.href}
