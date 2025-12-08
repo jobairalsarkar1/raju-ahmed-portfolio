@@ -49,6 +49,7 @@ export const projects = [
     category: "Mobile App Design",
     image: "/projects/project-03.png",
     description: "Detailed project description here...",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
     link: "https://project-url.com",
   },
 ];

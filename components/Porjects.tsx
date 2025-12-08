@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projects } from "@/lib/constants";
 import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 
-// Calculate total pages based on projects per page
 const PROJECTS_PER_PAGE = 4;
 const TOTAL_PAGES = Math.ceil(projects.length / PROJECTS_PER_PAGE);
 
@@ -12,6 +11,19 @@ export default function Projects() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check for mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Calculate projects for current page
   const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
@@ -69,6 +81,19 @@ export default function Projects() {
     }
   };
 
+  // Prevent body scroll when slider is open
+  useEffect(() => {
+    if (isSliderOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isSliderOpen]);
+
   // Generate pagination numbers
   const getPaginationNumbers = () => {
     const numbers = [];
@@ -120,7 +145,7 @@ export default function Projects() {
 
   return (
     <>
-      <div className="bg-white py-16" onKeyDown={handleKeyDown}>
+      <div className="bg-white py-16" onKeyDown={handleKeyDown} tabIndex={-1}>
         <div className="container mx-auto px-4 lg:px-8 xl:px-16">
           {/* Header */}
           <div className="text-center mb-16">
@@ -150,7 +175,7 @@ export default function Projects() {
                 {/* Bottom Gradient Overlay */}
                 <div
                   className="absolute inset-0 flex flex-col justify-end p-8 
-                  bg-gradient-to-t from-black/80 via-black/40 to-transparent"
+                  bg-linear-to-t from-black/80 via-black/40 to-transparent"
                 >
                   <div className="flex items-start justify-between w-full">
                     {/* Text */}
@@ -246,16 +271,21 @@ export default function Projects() {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50"
             onClick={closeSlider}
           />
 
           {/* Slider Container */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Close Button */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 md:p-4">
+            {/* Close Button - Mobile: bottom center, Desktop: top right */}
             <button
               onClick={closeSlider}
-              className="absolute top-4 right-4 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all"
+              className={`fixed z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all
+                ${
+                  isMobile
+                    ? "bottom-6 left-1/2 -translate-x-1/2"
+                    : "top-4 right-4"
+                }`}
             >
               <X className="w-6 h-6" />
             </button>
@@ -266,9 +296,14 @@ export default function Projects() {
                 e.stopPropagation();
                 goToPreviousProject();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all"
+              className={`absolute z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all
+                ${
+                  isMobile
+                    ? "left-2 top-1/2 -translate-y-1/2"
+                    : "left-4 top-1/2 -translate-y-1/2"
+                }`}
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             <button
@@ -276,44 +311,89 @@ export default function Projects() {
                 e.stopPropagation();
                 goToNextProject();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all"
+              className={`absolute z-50 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-all
+                ${
+                  isMobile
+                    ? "right-2 top-1/2 -translate-y-1/2"
+                    : "right-4 top-1/2 -translate-y-1/2"
+                }`}
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
-            {/* Project Content */}
+            {/* Project Content - Full background image with overlay */}
             <div
-              className="relative w-full max-w-6xl h-[90vh] bg-white rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-full h-full md:w-full md:h-[90vh] max-w-6xl rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Project Image */}
-              <div className="h-2/3 relative">
+              {/* Background Image */}
+              <div className="absolute inset-0">
                 <img
                   src={projects[currentProjectIndex].image}
                   alt={projects[currentProjectIndex].title}
                   className="w-full h-full object-cover"
                 />
 
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                {/* Dark overlay over entire image */}
+                <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/60 to-black/80 md:bg-linear-to-b md:from-black/60 md:via-black/50 md:to-black/80" />
               </div>
 
-              {/* Project Details */}
-              <div className="h-1/3 p-8 md:p-12 overflow-y-auto">
-                <div className="w-full">
-                  <div className="w-full flex items-start justify-between mb-6">
+              {/* Content Overlay */}
+              <div className="relative h-full w-full flex flex-col justify-end p-4 md:p-8 lg:p-12">
+                <div className="w-full max-w-4xl mx-auto">
+                  {/* Project counter - Top on mobile, right side on desktop */}
+                  <div
+                    className={`text-2xl md:text-4xl font-extrabold text-violet-400 mb-4 md:mb-0
+                    ${
+                      isMobile
+                        ? "text-center"
+                        : "absolute top-8 right-8 text-right"
+                    }`}
+                  >
+                    {currentProjectIndex + 1} / {projects.length}
+                  </div>
+
+                  {/* Main content area */}
+                  <div className="space-y-4 md:space-y-6">
+                    {/* Title and category */}
                     <div>
-                      <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
                         {projects[currentProjectIndex].title}
                       </h3>
-                      <p className="text-xl text-gray-600">
+                      <p className="text-lg md:text-xl text-gray-300">
                         {projects[currentProjectIndex].category}
                       </p>
                     </div>
-                    <div className="text-right">
-                      <div className="text-4xl font-extrabold text-violet-400 mb-2">
-                        {currentProjectIndex + 1} / {projects.length}
+
+                    {/* Description */}
+                    <p className="text-base md:text-lg text-gray-200 leading-relaxed max-w-3xl">
+                      {projects[currentProjectIndex].description ||
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."}
+                    </p>
+
+                    {/* Tech Stack (if available) */}
+                    {/* {projects[currentProjectIndex].tech && (
+                      <div className="pt-4">
+                        <h4 className="text-lg md:text-xl font-semibold text-white mb-3">
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-2 md:gap-3">
+                          {projects[currentProjectIndex].tech?.map(
+                            (tech, index) => (
+                              <span
+                                key={index}
+                                className="px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-sm text-gray-200 rounded-full text-sm font-medium"
+                              >
+                                {tech}
+                              </span>
+                            )
+                          )}
+                        </div>
                       </div>
+                    )} */}
+
+                    {/* Action buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 pt-6">
                       <button
                         onClick={() => {
                           window.open(
@@ -321,18 +401,29 @@ export default function Projects() {
                             "_blank"
                           );
                         }}
-                        className="inline-flex items-center gap-2 bg-[#6E46FF] hover:bg-[#6E46FF]/80 text-white font-semibold py-2 px-6 rounded-full"
+                        className="inline-flex items-center justify-center gap-2 bg-[#6E46FF] hover:bg-[#6E46FF]/80 text-white font-semibold py-3 px-6 rounded-full transition-all"
                       >
                         Visit Project
                         <ArrowUpRight className="w-5 h-5" />
                       </button>
+
+                      {/* Mobile pagination dots */}
+                      {isMobile && (
+                        <div className="flex justify-center gap-2 pt-4">
+                          {projects.map((_, index) => (
+                            <div
+                              key={index}
+                              className={`w-2 h-2 rounded-full ${
+                                index === currentProjectIndex
+                                  ? "bg-white"
+                                  : "bg-white/30"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-
-                  <p className="text-gray-700 text-lg leading-relaxed">
-                    {projects[currentProjectIndex].description ||
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."}
-                  </p>
                 </div>
               </div>
             </div>
