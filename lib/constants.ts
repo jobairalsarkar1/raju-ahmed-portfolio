@@ -7,6 +7,53 @@ import {
   Sparkles,
 } from "lucide-react";
 
+export const projects = [
+  {
+    title: "Language Learning App",
+    category: "Landing Page Design",
+    image: "/projects/project-01.png",
+    description: "Detailed project description here...",
+    link: "https://project-url.com",
+  },
+  {
+    title: "AI Image Generator Landing Page",
+    category: "Landing Page Design",
+    image: "/projects/project-02.png",
+    description: "Detailed project description here...",
+    link: "https://project-url.com",
+  },
+  {
+    title: "Real Estate Website Design",
+    category: "Website Design",
+    image: "/projects/project-03.png",
+    description: "Detailed project description here...",
+    link: "https://project-url.com",
+  },
+  {
+    title: "Crypto Wallet App UI Design",
+    category: "Mobile App Design",
+    image: "/projects/project-03.png",
+    description: "Detailed project description here...",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    link: "https://project-url.com",
+  },
+  {
+    title: "Crypto Wallet App UI Design",
+    category: "Mobile App Design",
+    image: "/projects/project-03.png",
+    description: "Detailed project description here...",
+    link: "https://project-url.com",
+  },
+  {
+    title: "Crypto Wallet App UI Design",
+    category: "Mobile App Design",
+    image: "/projects/project-03.png",
+    description: "Detailed project description here...",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    link: "https://project-url.com",
+  },
+];
+
 export const services = [
   {
     number: "01",
