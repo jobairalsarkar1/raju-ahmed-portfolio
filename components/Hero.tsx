@@ -17,7 +17,7 @@ function Hero() {
       </div>
 
       {/* White Gradient Overlay (deeper bottom fade) */}
-      <div className="absolute bottom-0 left-0 right-0 h-[70%] bg-gradient-to-t from-white/95 via-white/60 to-transparent z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-[70%] bg-linear-to-t from-white/95 via-white/60 to-transparent z-20" />
 
       {/* DESKTOP SOCIAL LABELS */}
       <div className="hidden md:flex absolute bottom-20 left-1/2 -translate-x-1/2 z-30 items-center gap-6 text-xl font-medium text-[#1E1E1E]">
