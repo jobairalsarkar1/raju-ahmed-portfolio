@@ -118,7 +118,7 @@ export default function ContactAndFooter() {
                 src={vectorBg}
                 alt="Background wave"
                 fill
-                className="object-cover opacity-30"
+                className="object-cover opacity-100"
               />
 
               <div className="relative z-10 px-6 sm:px-10 md:px-12 py-12 sm:py-16 md:py-20 text-center">
