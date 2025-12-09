@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <div className="relative bg-gray-50 py-8 sm:py-28 min-h-screen overflow-hidden">
+    <div className="relative bg-gray-50 py-8 sm:py-28 min-h-screen overflow-hidden bg-[url('/hero-bg.png')] bg-cover bg-center">
       {/* CENTER PERSON IMAGE */}
       <div className="absolute inset-0 bottom-20 flex items-center justify-center pointer-events-none">
         <Image
