@@ -1,5 +1,5 @@
 import Image from "next/image";
-import profilePic from "@/public/person.png";
+import profilePic from "@/public/person-02.png";
 
 export default function About() {
   return (
@@ -28,7 +28,7 @@ export default function About() {
                   src={profilePic}
                   alt="Raju Ahamed"
                   fill
-                  className="object-cover grayscale"
+                  className="object-contain grayscale"
                   priority
                 />
               </div>
