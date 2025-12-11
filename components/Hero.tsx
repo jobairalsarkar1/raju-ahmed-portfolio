@@ -1,4 +1,4 @@
-import { Download, Dribbble, Facebook, Figma, Linkedin } from "lucide-react";
+import { Download, Dribbble, Figma, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 function Hero() {
@@ -65,10 +65,10 @@ function Hero() {
           </p>
 
           <h1 className="text-[70px] md:text-[100px] text-[#1E1E1E] font-semibold leading-[1.2]">
-            I'm RAJU
+            I&apos;m RAJU
           </h1>
 
-          <button className="my-8 px-8 py-2.5 text-lg md:text-xl flex items-center justify-center gap-2 rounded-full bg-[#6E46FF] text-white font-semibold hover:bg-[#6E46FF]/90 transition mx-auto md:mx-0">
+          <button className="my-8 px-8 py-2.5 text-lg md:text-xl flex items-center justify-center gap-2 rounded-full bg-[#01E7A5] text-black font-semibold hover:bg-[#01E7A5]/90 transition mx-auto md:mx-0">
             <span className="tracking-wide">View My Resume</span>
             <Download className="w-6 h-6" />
           </button>

@@ -212,7 +212,7 @@ export default function Projects() {
                   ${
                     currentPage === 1
                       ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                      : "border-gray-300 hover:bg-[#6E46FF] hover:border-[#6E46FF] hover:text-white"
+                      : "border-gray-300 hover:bg-[#01E7A5] hover:border-[#01E7A5] hover:text-white"
                   }`}
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -230,7 +230,7 @@ export default function Projects() {
                         page === "..."
                           ? "cursor-default text-gray-500"
                           : page === currentPage
-                          ? "bg-[#6E46FF] text-white"
+                          ? "bg-[#01E7A5] text-black"
                           : "bg-gray-200 text-gray-600 hover:bg-gray-300"
                       }`}
                     disabled={page === "..."}
@@ -247,7 +247,7 @@ export default function Projects() {
                   ${
                     currentPage === TOTAL_PAGES
                       ? "border-gray-200 text-gray-300 cursor-not-allowed"
-                      : "border-gray-300 hover:bg-[#6E46FF] hover:border-[#6E46FF] hover:text-white"
+                      : "border-gray-300 hover:bg-[#01E7A5] hover:border-[#01E7A5] hover:text-white"
                   }`}
               >
                 <ChevronRight className="w-6 h-6" />
@@ -257,7 +257,7 @@ export default function Projects() {
             {/* View All Button */}
             <button
               onClick={handleViewAllClick}
-              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-[#6E46FF] hover:bg-[#6E46FF]/80 text-white font-semibold text-[20px] px-8 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="order-1 sm:order-2 inline-flex items-center justify-center gap-3 bg-[#01E7A5] hover:bg-[#01E7A5]/80 text-black font-semibold text-[20px] px-8 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             >
               View All My Portfolio Works
               <ArrowUpRight className="w-7 h-7" />
@@ -401,7 +401,7 @@ export default function Projects() {
                             "_blank"
                           );
                         }}
-                        className="inline-flex items-center justify-center gap-2 bg-[#6E46FF] hover:bg-[#6E46FF]/80 text-white font-semibold py-3 px-6 rounded-full transition-all"
+                        className="inline-flex items-center justify-center gap-2 bg-[#01E7A5] hover:bg-[#01E7A5]/80 text-white font-semibold py-3 px-6 rounded-full transition-all"
                       >
                         Visit Project
                         <ArrowUpRight className="w-5 h-5" />

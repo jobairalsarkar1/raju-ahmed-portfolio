@@ -50,7 +50,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   scroll={true}
-                  className="text-sm lg:text-[20px] tracking-wide font-semibold hover:text-[#6E46FF] transition whitespace-nowrap"
+                  className="text-sm lg:text-[20px] tracking-wide font-semibold hover:text-[#01E7A5] transition whitespace-nowrap"
                 >
                   {item.label}
                 </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
               <Link
                 href="#contact"
                 scroll={true}
-                className="pl-8 pr-6 py-2.5 flex items-center justify-center gap-2 rounded-full bg-[#6E46FF] text-white text-[20px] font-semibold hover:bg-[#6E46FF]/90 transition"
+                className="pl-8 pr-6 py-2.5 flex items-center justify-center gap-2 rounded-full bg-[#01E7A5] text-black text-[20px] font-semibold hover:bg-[#01E7A5]/90 transition"
               >
                 <span className="tracking-wide">Let&apos;s Talk</span>
                 <ArrowUpRight className="w-6 h-6" />
@@ -123,7 +123,7 @@ export default function Navbar() {
             href="#contact"
             scroll={true}
             onClick={() => setOpen(false)}
-            className="mt-4 pl-6 pr-5 py-2 rounded-full bg-[#6E46FF] text-white flex items-center justify-center gap-2"
+            className="mt-4 pl-6 pr-5 py-2 rounded-full bg-[#01E7A5] text-black flex items-center justify-center gap-2"
           >
             <span>Let&apos;s Talk</span>
             <ArrowUpRight className="w-6 h-6" />

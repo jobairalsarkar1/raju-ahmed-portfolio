@@ -7,6 +7,34 @@ import { faqs } from "@/lib/constants";
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
+  // State for background animation for each FAQ
+  const [showOpenBg, setShowOpenBg] = useState<boolean[]>(
+    Array(faqs.length).fill(false)
+  );
+
+  // Side effect to toggle background animation correctly
+  useEffect(() => {
+    const updated = [...showOpenBg];
+
+    faqs.forEach((_, i) => {
+      if (i === openIndex) {
+        updated[i] = true;
+      } else {
+        // add small delay to allow closing animation
+        setTimeout(() => {
+          setShowOpenBg((prev) => {
+            const temp = [...prev];
+            temp[i] = false;
+            return temp;
+          });
+        }, 500);
+      }
+    });
+
+    setShowOpenBg(updated);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [openIndex]);
+
   return (
     <div className="bg-gray-50 py-12 sm:py-16">
       <div className="container mx-auto px-4 lg:px-8 xl:px-16">
@@ -44,17 +72,6 @@ export default function FAQ() {
         <div>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
-            const [showOpenBg, setShowOpenBg] = useState(isOpen);
-
-            useEffect(() => {
-              let timer: any;
-              if (isOpen) {
-                setShowOpenBg(true);
-              } else {
-                timer = setTimeout(() => setShowOpenBg(false), 500);
-              }
-              return () => clearTimeout(timer);
-            }, [isOpen]);
 
             return (
               <div
@@ -75,7 +92,7 @@ export default function FAQ() {
                     text-left gap-4 
                     transition-colors duration-500 
                     ${
-                      showOpenBg
+                      showOpenBg[index]
                         ? "bg-[#1E1E1E] text-white"
                         : "bg-white text-gray-900 hover:bg-gray-50"
                     }
@@ -83,9 +100,9 @@ export default function FAQ() {
                 >
                   <span
                     className="
-                    text-[20px] sm:text-[26px] md:text-[32px] 
-                    font-semibold leading-snug
-                  "
+                      text-[20px] sm:text-[26px] md:text-[32px] 
+                      font-semibold leading-snug
+                    "
                   >
                     {index + 1}. {faq.question}
                   </span>
@@ -93,20 +110,20 @@ export default function FAQ() {
                   {isOpen ? (
                     <div
                       className="
-                      w-8 h-8 sm:w-9 sm:h-9 
-                      bg-[#6C46FF] rounded-full 
-                      flex items-center justify-center
-                    "
+                        w-8 h-8 sm:w-9 sm:h-9 
+                        bg-[#01E7A5] rounded-full 
+                        flex items-center justify-center
+                      "
                     >
-                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
                     </div>
                   ) : (
                     <div
                       className="
-                      w-8 h-8 sm:w-9 sm:h-9 
-                      bg-gray-900 rounded-full 
-                      flex items-center justify-center
-                    "
+                        w-8 h-8 sm:w-9 sm:h-9 
+                        bg-gray-900 rounded-full 
+                        flex items-center justify-center
+                      "
                     >
                       <ChevronDown className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                     </div>

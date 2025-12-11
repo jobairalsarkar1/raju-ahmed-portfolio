@@ -66,7 +66,7 @@ export default function ContactAndFooter() {
                     type="text"
                     id="name"
                     placeholder="Ex. John Doe"
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#6E46FF]"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#01E7A5]"
                   />
                 </div>
 
@@ -81,7 +81,7 @@ export default function ContactAndFooter() {
                     type="email"
                     id="email"
                     placeholder="Ex. yourmail@example.com"
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#6E46FF]"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#01E7A5]"
                   />
                 </div>
 
@@ -95,13 +95,13 @@ export default function ContactAndFooter() {
                   <textarea
                     id="details"
                     rows={4}
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-[#6E46FF]"
+                    className="w-full px-4 sm:px-6 py-3 sm:py-4 text-lg sm:text-xl bg-[#F2F2F2] rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-[#01E7A5]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#6E46FF] text-lg sm:text-xl text-white font-semibold py-3 sm:py-4 rounded-full hover:bg-[#6E46FF]/90"
+                  className="w-full bg-[#01E7A5] text-lg sm:text-xl text-white font-semibold py-3 sm:py-4 rounded-full hover:bg-[#01E7A5]/90"
                 >
                   Send Message
                 </button>
